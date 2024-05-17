@@ -191,7 +191,47 @@ lazy.setup({
 
   "glepnir/lspsaga.nvim", -- LSP UIs
   "L3MON4D3/LuaSnip",
-  { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        highlight = {
+          enable = true,
+          disable = {},
+        },
+        indent = {
+          enable = true,
+          disable = {},
+        },
+        ensure_installed = {
+          "tsx",
+          "fish",
+          "json",
+          "yaml",
+          "css",
+          "html",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "graphql",
+          "regex",
+          "typescript",
+          "javascript",
+        },
+        --- Automatically install missing parsers when entering buffer
+        auto_install = true,
+
+        autotag = {
+          enable = true,
+        },
+      }
+
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+    end
+  },
   "kyazdani42/nvim-web-devicons", -- File icons
   {
     "nvim-telescope/telescope.nvim",
@@ -436,7 +476,7 @@ lazy.setup({
       })
     end
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
   "tpope/vim-surround",
   {
     "levouh/tint.nvim", -- Dims inactive windows
@@ -449,7 +489,7 @@ lazy.setup({
   },
 
   -- themes
-  { "catppuccin/nvim",                  as = "catppuccin" },
+  { "catppuccin/nvim",                     as = "catppuccin" },
   {
     "nomnivore/ollama.nvim",
     dependencies = {
