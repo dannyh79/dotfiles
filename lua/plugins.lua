@@ -23,7 +23,14 @@ lazy.setup({
   "kyazdani42/nvim-web-devicons", -- File icons
   "nvim-telescope/telescope.nvim",
   "nvim-telescope/telescope-file-browser.nvim",
-  "windwp/nvim-autopairs",
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({
+        disable_filetype = { "TelescopePrompt", "vim" },
+      })
+    end
+  },
   "windwp/nvim-ts-autotag",
   {
     "numToStr/Comment.nvim",
