@@ -17,5 +17,4 @@ require("options")
 require("maps")
 require("plugins")
 
-vim.cmd.colorscheme "tokyonight-night"
 -- require("lazy").setup("dannyh79.plugins")
