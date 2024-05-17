@@ -206,7 +206,6 @@ lazy.setup({
         },
         ensure_installed = {
           "tsx",
-          "fish",
           "json",
           "yaml",
           "css",
@@ -215,7 +214,6 @@ lazy.setup({
           "markdown",
           "markdown_inline",
           "python",
-          "graphql",
           "regex",
           "typescript",
           "javascript",
