@@ -736,19 +736,6 @@ return {
       }
     end
   },
-  {
-    "dinhhuy258/git.nvim", -- For git blame & browse
-    config = function()
-      require("git").setup({
-        keymaps = {
-          -- Open blame window
-          blame = "<Leader>gb",
-          -- Open file/folder in git repository
-          browse = "<Leader>go",
-        }
-      })
-    end
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
