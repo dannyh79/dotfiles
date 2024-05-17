@@ -595,14 +595,6 @@ return {
       end)
     end
   },
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup({
-        disable_filetype = { "TelescopePrompt", "vim" },
-      })
-    end
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
