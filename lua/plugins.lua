@@ -193,8 +193,12 @@ lazy.setup({
   "L3MON4D3/LuaSnip",
   { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
   "kyazdani42/nvim-web-devicons", -- File icons
-  "nvim-telescope/telescope.nvim",
-  "nvim-telescope/telescope-file-browser.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-file-browser.nvim",
+    },
+  },
   {
     "windwp/nvim-autopairs",
     config = function()
