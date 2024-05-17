@@ -400,22 +400,6 @@ return {
     end
   },
 
-  {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-        ensure_installed = { "lua_ls", "tsserver" },
-      })
-    end
-  },
-
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
   { "purescript-contrib/purescript-vim" },
