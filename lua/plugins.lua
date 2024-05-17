@@ -646,12 +646,6 @@ return {
     end
   },
   "folke/zen-mode.nvim",
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
