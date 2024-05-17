@@ -452,7 +452,6 @@ return {
       end, { silent = true })
     end
   },
-  "L3MON4D3/LuaSnip",
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
