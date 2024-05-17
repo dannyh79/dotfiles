@@ -181,7 +181,19 @@ lazy.setup({
   },
 
   "lewis6991/gitsigns.nvim",
-  "dinhhuy258/git.nvim", -- For git blame & browse
+  {
+    "dinhhuy258/git.nvim", -- For git blame & browse
+    config = function()
+      require("git").setup({
+        keymaps = {
+          -- Open blame window
+          blame = "<Leader>gb",
+          -- Open file/folder in git repository
+          browse = "<Leader>go",
+        }
+      })
+    end
+  },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {} },
   "tpope/vim-surround",
   "levouh/tint.nvim",
