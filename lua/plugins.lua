@@ -186,8 +186,22 @@ lazy.setup({
   },
   "neovim/nvim-lspconfig",  -- LSP
   "nvimtools/none-ls.nvim", -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        automatic_installation = true,
+        ensure_installed = { "lua_ls", "tsserver" },
+      })
+    end
+  },
 
   "glepnir/lspsaga.nvim", -- LSP UIs
   "L3MON4D3/LuaSnip",
