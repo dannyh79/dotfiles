@@ -749,7 +749,6 @@ return {
       })
     end
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
