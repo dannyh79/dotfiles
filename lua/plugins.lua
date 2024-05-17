@@ -1,10 +1,4 @@
-local status, lazy = pcall(require, "lazy")
-if (not status) then
-  print("Lazy (plugin manager) is not installed")
-  return
-end
-
-lazy.setup({
+return {
   {
     "nvim-lualine/lualine.nvim", -- Statusline
     config = function()
@@ -904,4 +898,4 @@ lazy.setup({
       vim.cmd.colorscheme "tokyonight-night"
     end
   }
-})
+}
