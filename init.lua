@@ -13,9 +13,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("dannyh79.options")
-require("dannyh79.maps")
-require("dannyh79.plugins")
+require("options")
+require("maps")
+require("plugins")
 
 vim.cmd.colorscheme "tokyonight-night"
 -- require("lazy").setup("dannyh79.plugins")
