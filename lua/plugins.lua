@@ -492,20 +492,6 @@ return {
       parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
     end
   },
-  {
-    "kyazdani42/nvim-web-devicons", -- File icons
-    config = function()
-      require("nvim-web-devicons").setup {
-        -- your personnal icons can go here (to override)
-        -- DevIcon will be appended to `name`
-        override = {
-        },
-        -- globally enable default icons (default to false)
-        -- will get overriden by `get_icons` option
-        default = true
-      }
-    end
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
