@@ -637,14 +637,6 @@ return {
       }
     end
   },
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({
-        '*',
-      })
-    end
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
