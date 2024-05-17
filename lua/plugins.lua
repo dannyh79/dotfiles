@@ -5,7 +5,6 @@ if (not status) then
 end
 
 lazy.setup({
-  "wbthomason/packer.nvim",
   {
     "nvim-lualine/lualine.nvim", -- Statusline
     config = function()
@@ -756,7 +755,7 @@ lazy.setup({
       })
     end
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   "tpope/vim-surround",
   {
     "levouh/tint.nvim", -- Dims inactive windows
@@ -768,8 +767,6 @@ lazy.setup({
     end
   },
 
-  -- themes
-  { "catppuccin/nvim",                     as = "catppuccin" },
   {
     "nomnivore/ollama.nvim",
     dependencies = {
