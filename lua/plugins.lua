@@ -751,15 +751,6 @@ return {
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   "tpope/vim-surround",
-  {
-    "levouh/tint.nvim", -- Dims inactive windows
-    config = function()
-      require("tint").setup {
-        tint = -50,
-        tint_background_colors = false
-      }
-    end
-  },
 
   -- purescript 2024-03-07 13:36:46 +0800
   -- Syntax highlighting
