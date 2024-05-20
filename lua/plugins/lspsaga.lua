@@ -27,6 +27,7 @@ return {
 
     -- code action
     local codeaction = require("lspsaga.codeaction")
+    vim.opt.signcolumn = "yes:1"
     vim.keymap.set("n", "<leader>ca", function() codeaction:code_action() end, { silent = true })
     vim.keymap.set("v", "<leader>ca", function()
       vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
