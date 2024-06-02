@@ -87,7 +87,18 @@ local servers = {
   cssls = { capabilities = capabilities, on_attach = on_attach, },
   elixirls = { capabilities = capabilities, on_attach = on_attach, },
   gopls = { capabilities = capabilities, on_attach = on_attach, },
-  purescriptls = { capabilities = capabilities, on_attach = on_attach, },
+  purescriptls = {
+    settings = {
+      purescript = {
+        formatter = "purs-tidy",
+      },
+    },
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      enable_format_on_save(client, bufnr)
+    end,
+  },
 }
 
 return {
