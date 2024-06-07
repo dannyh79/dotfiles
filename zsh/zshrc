@@ -1,0 +1,53 @@
+# dannyh79's .zshrc (2024-06-07 22:39:43 +0800)
+# You can reach me on https://github.com/dannyh79/
+# Enjoy :)
+
+# 2021-12-09 10:32:34 +0800 move this part up top
+# gpg terminal patch for git (problem occured since 11/01, '19)
+# this is to set "GPG_TTY environment variable"
+# found in https://juliansimioni.com/blog/troubleshooting-gpg-git-commit-signing/
+export GPG_TTY=$(tty)
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -v
+bindkey -e
+
+
+# You may need to manually set your language environment
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+
+# Gaming
+# needs to be used under x86, i.e., `$ arch -x86_64 zsh`
+wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-windows-gaming $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
+
+load_every_file_in_dir() {
+  if [[ -d "$1" ]]; then
+    for file in $1/*; do
+      if [[ -f $file ]]; then
+        source $file
+      fi
+    done
+  else
+    echo "Directory not found: $1"
+  fi
+}
+
+# Etc
+# TODO: set up auto install for the bins
+etc_dir="$HOME/.config/zsh/etc"
+load_every_file_in_dir $etc_dir
+
+# Aliases
+# TODO: set up auto install for the bins
+aliases_dir="$HOME/.config/zsh/aliases"
+load_every_file_in_dir $aliases_dir
