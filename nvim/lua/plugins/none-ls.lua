@@ -1,5 +1,5 @@
 return {
-  "nvimtools/none-ls.nvim",   -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  "nvimtools/none-ls.nvim", -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   config = function()
     local null_ls = require("null-ls")
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
