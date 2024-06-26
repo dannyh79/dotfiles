@@ -1,0 +1,11 @@
+[user]
+name = Cheng-Hsuan \"Danny\" Han
+email = chenghsuan.han@gmail.com
+# signingkey = 1111111111111111
+[commit]
+# gpgsign = true
+[core]
+excludesFile = ~/.config/git/gitignore
+pager = "less -MR -+FX"
+[init]
+defaultBranch = main
