@@ -1,2 +1,5 @@
+# [git] ignores secrets
+/git/secrets
+
 # [tmux] ignores installed tmux plugins
 /tmux/plugins
