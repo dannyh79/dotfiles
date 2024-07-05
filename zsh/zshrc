@@ -49,6 +49,15 @@ load_every_file_in_dir() {
   fi
 }
 
+# auto switch macOS brew path by arch
+if [ "$(uname)" = "Darwin" ]; then
+  if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
 # Etc
 # TODO: set up auto install for the bins
 etc_dir="$HOME/.config/zsh/etc"
