@@ -1,0 +1,111 @@
+# Homebrew packages list: https://github.com/Homebrew/homebrew-bundle
+# Usage: brew bundle --file=/path/to/this/Brewfile
+# Check dep tree: brew deps --tree --installed
+
+tap "homebrew/bundle"
+
+
+# [Terminal]
+cask "iterm2"
+brew "fzf" # Fuzzy finder: https://github.com/junegunn/fzf
+brew "ripgrep" # Finder engine for fzf & neovim's telescope
+brew "asdf" # Tool version manager: https://asdf-vm.com/guide/introduction.html
+brew "thefuck" # Correts terminal command: https://github.com/nvbn/thefuck
+brew "powerlevel10k" # Zsh theme: https://github.com/romkatv/powerlevel10k
+brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
+# brew "watchman" # File watching service: https://facebook.github.io/watchman/
+
+# Version Control
+brew "git"
+brew "unbound" # gnutls dep
+brew "gnutls" # gnupg dep
+brew "gnupg" # Commit signing
+
+# brew "htop"
+brew "btop" # Fancier htop
+brew "bats-core" # Fancier cat
+
+# Font
+tap "homebrew/cask-fonts"
+cask "font-hack-nerd-font"
+
+brew "neovim"
+brew "tmux"
+brew "tpm" # Tmux package manager
+
+brew "netcat"
+brew "telnet"
+brew "ollama"
+
+# Exercism CLI: https://exercism.org
+# brew "exercism"
+
+
+# [Ops]
+brew "cryptography" # ansible dep
+brew "ansible"
+
+
+# [Container tools]
+brew "podman"
+cask "podman-desktop"
+brew "podman-compose"
+brew "act" # GitHub workflow local runner
+brew "hadolint" # linter
+
+
+# [Database]
+# tap "homebrew/services"
+# brew "postgresql@14", restart_service: true
+
+
+tap "koekeishiya/formulae"
+brew "koekeishiya/formulae/skhd" # Hotkey daemon: https://github.com/koekeishiya/skhd
+brew "koekeishiya/formulae/yabai" # Tiling window manager: https://github.com/koekeishiya/yabai
+# cask "karabiner-elements" # Keyboard customizer; clashes with yabai: https://karabiner-elements.pqrs.org
+
+
+# [Web Browser]
+cask "firefox"
+cask "google-chrome"
+cask "google-drive"
+
+
+# [Note-Taking / Flashcard]
+cask "obsidian"
+cask "logseq"
+cask "anki"
+
+
+cask "bitwarden" # Password manager: https://bitwarden.com
+cask "postman"
+cask "slack"
+cask "spotify"
+# cask "steam"
+cask "telegram"
+cask "whatsapp"
+cask "discord"
+
+
+cask "visual-studio-code"
+vscode "asvetliakov.vscode-neovim"
+vscode "eamodio.gitlens"
+vscode "enkia.tokyo-night"
+vscode "exiasr.hadolint"
+vscode "golang.go"
+vscode "jakebecker.elixir-ls"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "nwolverson.language-purescript"
+vscode "phoenixframework.phoenix"
+
+
+# [Apple]
+# Apple Simulators: https://github.com/wix/AppleSimulatorUtils
+# tap "apple/apple"
+# tap "wix/brew"
+# brew "wix/brew/applesimutils"
+
+
+# [OS image flasher]
+# cask "balenaetcher"
