@@ -85,7 +85,18 @@ local servers = {
   },
   tailwindcss = { capabilities = capabilities, on_attach = on_attach, },
   cssls = { capabilities = capabilities, on_attach = on_attach, },
-  elixirls = { capabilities = capabilities, on_attach = on_attach, },
+  -- need to install manually:
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#elixirls
+  -- elixirls = {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  --   settings = {
+  --     credo = { enabled = false },
+  --   },
+  --   flags = {
+  --     debounce_text_changes = 150,
+  --   },
+  -- },
   gopls = { capabilities = capabilities, on_attach = on_attach, },
   purescriptls = {
     settings = {
