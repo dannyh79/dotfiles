@@ -130,6 +130,20 @@ local servers = {
     end,
   },
   vuels = { capabilities = capabilities, on_attach = on_attach, },
+  dockerls = {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      enable_format_on_save(client, bufnr)
+    end,
+  },
+  docker_compose_language_service = {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      enable_format_on_save(client, bufnr)
+    end,
+  },
 }
 
 return {
