@@ -118,6 +118,7 @@ local servers = {
       enable_format_on_save(client, bufnr)
     end,
   },
+  vuels = { capabilities = capabilities, on_attach = on_attach, },
 }
 
 return {
