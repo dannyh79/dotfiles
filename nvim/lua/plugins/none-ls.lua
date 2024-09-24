@@ -26,6 +26,7 @@ return {
         null_ls.builtins.diagnostics.credo,
         null_ls.builtins.formatting.mix,
         null_ls.builtins.diagnostics.hadolint,
+        null_ls.builtins.diagnostics.checkmake,
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
