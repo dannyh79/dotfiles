@@ -129,7 +129,21 @@ local servers = {
       enable_format_on_save(client, bufnr)
     end,
   },
-  vuels = { capabilities = capabilities, on_attach = on_attach, },
+
+  -- Ref: https://github.com/williamboman/mason-lspconfig.nvim/issues/371#issuecomment-2018863753
+  volar = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    init_options = {
+      vue = {
+        hybridMode = false,
+      },
+      typescript = {
+        tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+      },
+    },
+  },
   dockerls = {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
