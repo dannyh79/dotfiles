@@ -66,7 +66,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local servers = {
   flow = { capabilities = capabilities, on_attach = on_attach, },
-  tsserver = { capabilities = capabilities, on_attach = on_attach, },
+  ts_ls = { capabilities = capabilities, on_attach = on_attach, },
   lua_ls = {
     capabilities = capabilities,
     on_attach = function(client, bufnr)

@@ -10,7 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         automatic_installation = true,
-        ensure_installed = { "lua_ls", "tsserver" },
+        ensure_installed = { "lua_ls", "ts_ls" },
       })
     end
   },
