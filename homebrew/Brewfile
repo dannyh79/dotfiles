@@ -1,5 +1,8 @@
 # Homebrew packages list: https://github.com/Homebrew/homebrew-bundle
-# Usage: brew bundle --file=/path/to/this/Brewfile
+# Usage:
+#   - brew bundle --file=/path/to/this/Brewfile
+#   - brew bundle dump --file=/path/to/this/Brewfile
+#
 # Check dep tree: brew deps --tree --installed
 
 tap "homebrew/bundle"
