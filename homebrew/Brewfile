@@ -6,6 +6,7 @@ tap "homebrew/bundle"
 
 
 # [Terminal]
+cask "kitty"
 cask "iterm2"
 brew "fzf" # Fuzzy finder: https://github.com/junegunn/fzf
 brew "ripgrep" # Finder engine for fzf & neovim's telescope
@@ -14,6 +15,7 @@ brew "thefuck" # Correts terminal command: https://github.com/nvbn/thefuck
 brew "powerlevel10k" # Zsh theme: https://github.com/romkatv/powerlevel10k
 brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
 # brew "watchman" # File watching service: https://facebook.github.io/watchman/
+brew "jq" # JSON query
 
 # Version Control
 brew "git"
