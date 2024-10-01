@@ -135,6 +135,14 @@ local servers = {
     capabilities = capabilities,
     on_attach = on_attach,
     filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    root_dir = function ()
+      require("lspconfig").util.root_pattern(
+        "vue.config.js",
+        "vue.config.ts",
+        "nuxt.config.js",
+        "nuxt.config.ts"
+      )
+    end,
     init_options = {
       vue = {
         hybridMode = false,
