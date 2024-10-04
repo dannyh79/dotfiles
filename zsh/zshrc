@@ -67,3 +67,7 @@ load_every_file_in_dir $etc_dir
 # TODO: set up auto install for the bins
 aliases_dir="$HOME/.config/zsh/aliases"
 load_every_file_in_dir $aliases_dir
+
+# Tab completion for git
+# Ref: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Zsh
+autoload -Uz compinit && compinit
