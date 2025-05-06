@@ -139,28 +139,29 @@ local servers = {
     end,
   },
 
-  -- Ref: https://github.com/williamboman/mason-lspconfig.nvim/issues/371#issuecomment-2018863753
-  volar = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    root_dir = function ()
-      require("lspconfig").util.root_pattern(
-        "vue.config.js",
-        "vue.config.ts",
-        "nuxt.config.js",
-        "nuxt.config.ts"
-      )
-    end,
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
-      typescript = {
-        tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
-      },
-    },
-  },
+  -- -- Ref: https://github.com/williamboman/mason-lspconfig.nvim/issues/371#issuecomment-2018863753
+  -- volar = {
+  --   capabilities = capabilities,
+  --   on_attach = on_attach,
+  --   filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  --   root_dir = function ()
+  --     require("lspconfig").util.root_pattern(
+  --       "vue.config.js",
+  --       "vue.config.ts",
+  --       "nuxt.config.js",
+  --       "nuxt.config.ts"
+  --     )
+  --   end,
+  --   init_options = {
+  --     vue = {
+  --       hybridMode = false,
+  --     },
+  --     typescript = {
+  --       tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+  --     },
+  --   },
+  -- },
+
   dockerls = {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
