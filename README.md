@@ -5,9 +5,9 @@
 ### Git
 
 ```shell
-$ cp git/config/secret.example git/config/secret
+$ cp git/secret.example git/secret
 
-# Then update git/config/secret with actual Replace GPG signing key value
+# Then update git/secret with actual Replace GPG signing key value
 ```
 
 ## Todo
