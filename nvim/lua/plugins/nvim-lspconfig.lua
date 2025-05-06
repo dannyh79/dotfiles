@@ -84,7 +84,16 @@ local servers = {
     },
   },
   tailwindcss = { capabilities = capabilities, on_attach = on_attach, },
-  cssls = { capabilities = capabilities, on_attach = on_attach, },
+  cssls = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+      css = {
+        validate = true,
+        lint = { unknownAtRules = "ignore" },
+      },
+    },
+  },
   -- need to install manually:
   -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#elixirls
   -- elixirls = {
