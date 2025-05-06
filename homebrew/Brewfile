@@ -5,8 +5,6 @@
 #
 # Check dep tree: brew deps --tree --installed
 
-tap "homebrew/bundle"
-
 
 # [Terminal]
 cask "kitty"
@@ -31,7 +29,6 @@ brew "btop" # Fancier htop
 brew "bats-core" # Fancier cat
 
 # Font
-tap "homebrew/cask-fonts"
 cask "font-hack-nerd-font"
 
 brew "neovim"
