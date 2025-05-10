@@ -15,7 +15,7 @@ return {
 
     null_ls.setup {
       sources = {
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettier,
         -- null_ls.builtins.diagnostics.eslint.with({
         --   diagnostics_format = '[eslint] #{m}\n(#{c})',
         --   condition = function(utils)
