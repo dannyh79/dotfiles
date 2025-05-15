@@ -20,6 +20,7 @@ brew "jq" # JSON query
 
 # Version Control
 brew "git"
+brew "git-gui"
 brew "unbound" # gnutls dep
 brew "gnutls" # gnupg dep
 brew "gnupg" # Commit signing
