@@ -1,5 +1,13 @@
 # Dotfiles
 
+```sh
+# Install
+make
+
+# Restore
+make restore
+```
+
 ## Gotchas
 
 ### Git
@@ -11,13 +19,6 @@ $ cp git/secret.example git/secret
 ```
 
 ## Todo
-
-- [ ] Initialization script
-    - Git
-    - Nvim
-    - Tmux
-    - Zsh
-    - ...
 
 - [ ] Distro support other than MacOS
     - Arch
