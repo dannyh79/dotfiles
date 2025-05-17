@@ -58,7 +58,6 @@ load_every_file_in_dir $etc_dir
 add_to_path "${PATH_ENTRIES[@]}"
 
 # Aliases
-# TODO: set up auto install for the bins
 aliases_dir="$HOME/.config/zsh/aliases"
 load_every_file_in_dir $aliases_dir
 

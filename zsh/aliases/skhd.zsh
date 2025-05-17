@@ -1,6 +1,8 @@
 # Simple hotkey daemon for macOS
 # https://github.com/koekeishiya/skhd
 
-if [ -x "$(command -v skhd)" ]; then
+source "$HOME/.config/zsh/internal/has_command.zsh"
+
+if has_command skhd; then
   alias skhdreload="skhd --restart-service"
 fi
