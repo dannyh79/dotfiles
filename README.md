@@ -15,7 +15,8 @@ make restore
 ```shell
 $ cp git/secret.example git/secret
 
-# Then update git/secret with actual Replace GPG signing key value
+# Then update git/secret with actual values
+# See more at https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key
 ```
 
 ## Todo
