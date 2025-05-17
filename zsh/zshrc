@@ -37,12 +37,17 @@ export LANG=en_US.UTF-8
 # needs to be used under x86, i.e., `$ arch -x86_64 zsh`
 wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-windows-gaming $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
 
+
+source "$HOME/.config/zsh/internal/has_command.zsh"
+
 # auto switch macOS brew path by arch
-if [ "$(uname)" = "Darwin" ]; then
-  if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    eval "$(/usr/local/bin/brew shellenv)"
+if has_command brew; then
+  if [ "$(uname)" = "Darwin" ]; then
+    if [ "$(arch)" = "arm64" ]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+      eval "$(/usr/local/bin/brew shellenv)"
+    fi
   fi
 fi
 
