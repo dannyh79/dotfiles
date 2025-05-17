@@ -3,10 +3,7 @@
 # Set Homebrew prefix if not already set
 export HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
 
-# Add fzf binary to PATH if missing
-if [[ ":$PATH:" != *":$HOMEBREW_PREFIX/opt/fzf/bin:"* ]]; then
-  export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
-fi
+PATH_ENTRIES+=("$HOMEBREW_PREFIX")
 
 # Enable fzf completion and key bindings
 [ -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
