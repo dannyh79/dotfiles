@@ -1,10 +1,10 @@
 return {
-  "nvim-lualine/lualine.nvim",   -- Statusline
+  "nvim-lualine/lualine.nvim", -- Statusline
   config = function()
     require("lualine").setup {
       options = {
         icons_enabled = true,
-        theme = 'tokyonight',
+        theme = 'iceberg_dark',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         disabled_filetypes = {}
@@ -24,7 +24,7 @@ return {
               if ollama_status == "IDLE" then
                 return icons[1]
               elseif ollama_status == "WORKING" then
-                return icons[os.date("%S") % #icons + 1]   -- animation
+                return icons[os.date("%S") % #icons + 1] -- animation
               end
             end,
             cond = function()
@@ -33,8 +33,8 @@ return {
           },
           {
             'filename',
-            file_status = true,   -- displays file status (readonly status, modified status)
-            path = 1              -- 0 = just filename, 1 = relative path, 2 = absolute path
+            file_status = true, -- displays file status (readonly status, modified status)
+            path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
           },
         },
         lualine_x = {
@@ -50,8 +50,8 @@ return {
         lualine_b = {},
         lualine_c = { {
           'filename',
-          file_status = true,   -- displays file status (readonly status, modified status)
-          path = 1              -- 0 = just filename, 1 = relative path, 2 = absolute path
+          file_status = true, -- displays file status (readonly status, modified status)
+          path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
         } },
         lualine_x = { 'location' },
         lualine_y = {},

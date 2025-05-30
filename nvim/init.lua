@@ -19,4 +19,4 @@ require("maps")
 require("lazy").setup("plugins")
 
 vim.opt.background = "dark"
-vim.cmd.colorscheme "tokyonight-night"
+vim.cmd.colorscheme "kanagawa"
