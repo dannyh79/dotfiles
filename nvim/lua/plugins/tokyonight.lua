@@ -38,8 +38,5 @@ return {
       on_highlights = function(highlights, colors)
       end,
     })
-
-    vim.opt.background = "dark"
-    vim.cmd.colorscheme "tokyonight-night"
   end
 }
