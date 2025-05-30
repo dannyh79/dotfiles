@@ -1,4 +1,4 @@
-# dannyh79's .zshrc (2025-05-17 21:05:09 +0800)
+# dannyh79's .zshrc (2025-05-31 02:56:27 +0800)
 # You can reach me on https://github.com/dannyh79/
 # Enjoy :)
 
@@ -41,13 +41,12 @@ wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-windows-gaming $(brew --prefix game-por
 source "$HOME/.config/zsh/internal/has_command.zsh"
 
 # auto switch macOS brew path by arch
-if has_command brew; then
-  if [ "$(uname)" = "Darwin" ]; then
-    if [ "$(arch)" = "arm64" ]; then
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    else
-      eval "$(/usr/local/bin/brew shellenv)"
-    fi
+# brew's installation is assumed here
+if [ "$(uname)" = "Darwin" ]; then
+  if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    eval "$(/usr/local/bin/brew shellenv)"
   fi
 fi
 
