@@ -4,8 +4,15 @@ add_to_path() {
     [[ -z "$dir" || ! -d "$dir" ]] && continue
     dir="${(e)dir%/}"
     case ":$PATH:" in
-      *":$dir:"*) ;;
-      *) export PATH="$dir:$PATH" ;;
+      *":$dir:"*)
+        # If already in PATH, remove it and then add to the beginning
+        PATH=$(echo "$PATH" | sed -e "s|:$dir:|$dir:|g" -e "s|^$dir:||g" -e "s|:$dir$||g" -e "s|::|:|g" -e "s|^:||g" -e "s|:$||g")
+        export PATH="$dir:$PATH"
+        ;;
+      *)
+        # If not in PATH, add to the beginning
+        export PATH="$dir:$PATH"
+        ;;
     esac
   done
 }

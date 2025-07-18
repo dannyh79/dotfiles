@@ -37,9 +37,6 @@ export LANG=en_US.UTF-8
 # needs to be used under x86, i.e., `$ arch -x86_64 zsh`
 wine-gptk(){ WINEESYNC=1 WINEPREFIX=~/my-windows-gaming $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
 
-
-source "$HOME/.config/zsh/internal/has_command.zsh"
-
 # auto switch macOS brew path by arch
 # brew's installation is assumed here
 if [ "$(uname)" = "Darwin" ]; then
@@ -53,6 +50,10 @@ fi
 source "$HOME/.config/zsh/internal/load_every_file_in_dir.zsh"
 source "$HOME/.config/zsh/internal/add_to_path.zsh"
 
+# Aliases
+aliases_dir="$HOME/.config/zsh/aliases"
+load_every_file_in_dir $aliases_dir
+
 PATH_ENTRIES=()
 
 # Etc
@@ -60,10 +61,6 @@ etc_dir="$HOME/.config/zsh/etc"
 load_every_file_in_dir $etc_dir
 
 add_to_path "${PATH_ENTRIES[@]}"
-
-# Aliases
-aliases_dir="$HOME/.config/zsh/aliases"
-load_every_file_in_dir $aliases_dir
 
 # Tab completion for git
 # Ref: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Zsh
