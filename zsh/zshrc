@@ -47,6 +47,13 @@ if [ "$(uname)" = "Darwin" ]; then
   fi
 fi
 
+# Source local environment variables
+if [ -f "$HOME/.config/zsh/.env.zsh" ]; then
+  source "$HOME/.config/zsh/.env.zsh"
+else
+  echo "Warning: .env.zsh not found in ~/.config/zsh/"
+fi
+
 source "$HOME/.config/zsh/internal/load_every_file_in_dir.zsh"
 source "$HOME/.config/zsh/internal/add_to_path.zsh"
 

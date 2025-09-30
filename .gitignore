@@ -3,3 +3,7 @@
 
 # [tmux] ignores installed tmux plugins
 /tmux/plugins
+
+# [zsh] ignores env file
+zsh/.env.zsh*
+!zsh/.env.zsh.example
