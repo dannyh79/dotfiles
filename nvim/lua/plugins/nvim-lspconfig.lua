@@ -139,12 +139,13 @@ local servers = {
     end,
   },
 
-  -- -- Ref: https://github.com/williamboman/mason-lspconfig.nvim/issues/371#issuecomment-2018863753
-  -- volar = {
+  -- Ref: https://github.com/williamboman/mason-lspconfig.nvim/issues/371#issuecomment-2018863753
+  -- LSP "volar" is deprecated by nvim-lspconfig and will be removed by nvim-lspconfig v3.0.0
+  -- vue_ls = {
   --   capabilities = capabilities,
   --   on_attach = on_attach,
   --   filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-  --   root_dir = function ()
+  --   root_dir = function()
   --     require("lspconfig").util.root_pattern(
   --       "vue.config.js",
   --       "vue.config.ts",
@@ -185,18 +186,28 @@ return {
 
     setup_completion_item_kind()
 
-    local nvim_lsp = require("lspconfig")
     for server, config in pairs(servers) do
-      nvim_lsp[server].setup(config)
+      vim.lsp.config[server] = config
+      vim.lsp.enable(server)
     end
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        signs = true,
-        virtual_text = { spacing = 0, prefix = "●" },
-      }
-    )
+    vim.diagnostic.config({
+      virtual_text = {
+        spacing = 0,
+        prefix = '●',
+      },
+      -- Ensures diagnostics are shown with underlines and signs (gutter icons)
+      underline = true,
+      signs = true,
+
+      float = {
+        source = true, -- Or "if_many"
+        border = "rounded", -- Always a good idea for aesthetics
+      },
+
+      -- Keep this if you like seeing updates while typing
+      update_in_insert = true,
+    })
 
     -- 2024-01-01 23:08:15 +0800
     -- stop using this config as it seems to cause line content shifts
@@ -211,7 +222,7 @@ return {
       virtual_text = { spacing = 0, prefix = '●' },
       update_in_insert = true,
       float = {
-        source = "always", -- Or "if_many"
+        source = true, -- Or "if_many"
       },
     })
   end
