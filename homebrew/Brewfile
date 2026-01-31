@@ -18,6 +18,10 @@ brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
 # brew "watchman" # File watching service: https://facebook.github.io/watchman/
 brew "jq" # JSON query
 
+# [VPN]
+brew tailscale
+# cask tailscale-app (app; managed tailscale process)
+
 # Version Control
 brew "git"
 brew "git-gui"
@@ -38,22 +42,22 @@ brew "tpm" # Tmux package manager
 
 brew "netcat"
 brew "telnet"
-brew "ollama"
+# brew "ollama"
 
 # Exercism CLI: https://exercism.org
 # brew "exercism"
 
 
 # [Ops]
-brew "cryptography" # ansible dep
-brew "ansible"
+# brew "cryptography" # ansible dep
+# brew "ansible"
 
 
 # [Container tools]
-brew "podman"
-cask "podman-desktop"
-brew "podman-compose"
-brew "act" # GitHub workflow local runner
+# brew "podman"
+# cask "podman-desktop"
+# brew "podman-compose"
+# brew "act" # GitHub workflow local runner
 brew "hadolint" # linter
 
 
@@ -75,9 +79,9 @@ cask "google-drive"
 
 
 # [Note-Taking / Flashcard]
-cask "obsidian"
-cask "logseq"
-cask "anki"
+# cask "obsidian"
+# cask "logseq"
+# cask "anki"
 
 
 cask "bitwarden" # Password manager: https://bitwarden.com
@@ -85,9 +89,9 @@ cask "postman"
 cask "slack"
 cask "spotify"
 # cask "steam"
-cask "telegram"
-cask "whatsapp"
-cask "discord"
+# cask "telegram"
+# cask "whatsapp"
+# cask "discord"
 
 
 cask "visual-studio-code"
