@@ -1,3 +1,7 @@
+# 2025-12-11 17:04:14
+# Mostly copied from ohmyzsh git plugin
+# Credit: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
+
 #
 # Functions
 #
@@ -18,6 +22,11 @@ function git_current_branch() {
 }
 
 function current_branch() {
+  git_current_branch
+}
+
+# I am lazy, I know
+function cb() {
   git_current_branch
 }
 
