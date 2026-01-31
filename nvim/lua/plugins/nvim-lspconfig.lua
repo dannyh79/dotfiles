@@ -176,6 +176,31 @@ local servers = {
       enable_format_on_save(client, bufnr)
     end,
   },
+
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pyflakes = { enabled = false },
+          pycodestyle = { enabled = false },
+          jedi_completion = { fuzzy = true },
+          jedi_definition = { follow_imports = true },
+        },
+      },
+    },
+    capabilities = capabilities,
+  },
+
+  -- Python linter/formatter
+  ruff = {
+    cmd = { vim.fn.getcwd() .. "/.venv/bin/ruff", "server" },
+    root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", ".git" }, { upward = true })[1]),
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      enable_format_on_save(client, bufnr)
+    end,
+  }
 }
 
 return {
