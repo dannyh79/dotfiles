@@ -1,5 +1,5 @@
 return {
-  "levouh/tint.nvim",   -- Dims inactive windows
+  "levouh/tint.nvim", -- Dims inactive windows
   config = function()
     require("tint").setup {
       tint = -50,

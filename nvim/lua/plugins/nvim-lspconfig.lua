@@ -206,8 +206,6 @@ local servers = {
 return {
   "neovim/nvim-lspconfig", -- Quickstart configs for Nvim LSP
   config = function()
-    --vim.lsp.set_log_level("debug")
-
     setup_completion_item_kind()
 
     for server, config in pairs(servers) do
@@ -225,7 +223,7 @@ return {
       signs = true,
 
       float = {
-        source = true, -- Or "if_many"
+        source = true,      -- Or "if_many"
         border = "rounded", -- Always a good idea for aesthetics
       },
 

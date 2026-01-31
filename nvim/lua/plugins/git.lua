@@ -1,5 +1,5 @@
 return {
-  "dinhhuy258/git.nvim",   -- For git blame & browse
+  "dinhhuy258/git.nvim", -- For git blame & browse
   config = function()
     require("git").setup({
       keymaps = {

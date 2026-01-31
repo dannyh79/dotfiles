@@ -1,5 +1,5 @@
 return {
-  "onsails/lspkind-nvim",   -- vscode-like pictograms
+  "onsails/lspkind-nvim", -- vscode-like pictograms
   config = function()
     require("lspkind").init({
       -- enables text annotations

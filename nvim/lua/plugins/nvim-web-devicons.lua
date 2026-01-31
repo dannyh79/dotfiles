@@ -1,5 +1,5 @@
 return {
-  "kyazdani42/nvim-web-devicons",   -- File icons
+  "kyazdani42/nvim-web-devicons", -- File icons
   config = function()
     require("nvim-web-devicons").setup {
       -- your personnal icons can go here (to override)
