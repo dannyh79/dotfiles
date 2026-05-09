@@ -3,7 +3,13 @@ gpgsign = true
 [core]
 excludesFile = ~/.config/git/gitignore
 pager = "less -MR -+FX"
+quotePath = false
 [init]
 defaultBranch = main
 [include]
 path = ~/.config/git/secrets
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
