@@ -1,0 +1,30 @@
+providers: 
+  webSearchOrder: 
+    - gemini
+    - perplexity
+    - anthropic
+    - codex
+    - xai
+    - zai
+    - exa
+    - tinyfish
+    - jina
+    - kagi
+    - tavily
+    - firecrawl
+    - brave
+    - kimi
+    - parallel
+    - synthetic
+    - searxng
+    - startpage
+    - duckduckgo
+    - ecosia
+    - google
+    - mojeek
+    - public
+setupVersion: 2
+modelRoles: 
+  default: openai-codex/gpt-5.6-terra
+dev: 
+  autoqaConsent: denied
