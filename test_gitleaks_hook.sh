@@ -43,17 +43,8 @@ fi
 
 echo ""
 echo "--- TEST 2: Clean staged content passes ---"
-# Create a mocked gitleaks binary that exits 0
-mkdir -p bin
-cat << 'EOF' > bin/gitleaks
-#!/bin/sh
-printf '%s\n' "$*" > "$GITLEAKS_ARGS_FILE"
-exit "$GITLEAKS_EXIT_CODE"
-EOF
-chmod +x bin/gitleaks
-export PATH="$PWD/bin:$ORIGINAL_PATH"
-export GITLEAKS_ARGS_FILE="$REPO_DIR/gitleaks-args"
-export GITLEAKS_EXIT_CODE=0
+# Restore PATH to use the real installed gitleaks
+export PATH=$ORIGINAL_PATH
 
 echo "clean content 2" > file2.txt
 git add file2.txt
@@ -63,25 +54,27 @@ else
     echo "FAIL: Commit rejected despite clean content"
     exit 1
 fi
-if [ "$(cat "$GITLEAKS_ARGS_FILE")" = "protect --staged --verbose --redact" ]; then
-    echo "PASS: Hook invokes gitleaks protect with staged and redaction flags"
-else
-    echo "FAIL: Hook invoked gitleaks with unexpected arguments"
-    exit 1
-fi
 
 echo ""
 echo "--- TEST 3: Secret-like staged content is rejected ---"
-# Make the mock report a detected secret without printing a value.
-export GITLEAKS_EXIT_CODE=1
-
-echo "secret_key = XYZ123" > secret.txt
+# We use a fake credential that triggers gitleaks to test the real scanner.
+# We build it at runtime so no real secret is committed.
+echo "ghp_""123456789012345678901234567890123456" > secret.txt
 git add secret.txt
-if git commit -m "Test secret commit" >/dev/null 2>&1; then
+# Capture the output to ensure it is redacted.
+if output=$(git commit -m "Test secret commit" 2>&1); then
     echo "FAIL: Commit succeeded despite secret content"
     exit 1
 else
     echo "PASS: Commit rejected with secret content"
+    if echo "$output" | grep -q "REDACTED"; then
+        echo "PASS: Scanner output was properly redacted"
+    else
+        echo "FAIL: Scanner output did not contain REDACTED"
+        echo "Actual output:"
+        echo "$output"
+        exit 1
+    fi
 fi
 
 echo ""

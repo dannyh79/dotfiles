@@ -10,7 +10,7 @@ fi
 
 # Run gitleaks on staged changes, redacting output to prevent logging secrets
 # Using --verbose to show which files failed, but --redact will hide the secret values.
-gitleaks protect --staged --verbose --redact
+gitleaks git --staged --verbose --redact
 exit_code=$?
 
 if [ $exit_code -ne 0 ]; then
