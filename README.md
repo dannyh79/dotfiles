@@ -8,6 +8,12 @@ make
 make restore
 ```
 
+## Testing
+
+```sh
+python3 test_makefile.py
+```
+
 ## Gotchas
 
 ### Git
