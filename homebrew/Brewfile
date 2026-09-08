@@ -23,6 +23,7 @@ brew "tailscale"
 # cask tailscale-app (app; managed tailscale process)
 
 # Version Control
+brew "gitleaks"
 brew "git"
 brew "git-gui"
 brew "gh" # GitHub CLI: https://cli.github.com

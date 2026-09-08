@@ -1,9 +1,9 @@
 .PHONY: all
-all: init-config init-git init-homebrew init-tmux init-zsh
+all: init-config init-git init-githooks init-homebrew init-tmux init-zsh
 
 # Restores in the opposite sequence of init's
 .PHONY: restore
-restore: restore-zsh restore-tmux restore-git restore-config
+restore: restore-zsh restore-tmux restore-githooks restore-git restore-config
 
 .PHONY: init-config
 init-config:
@@ -41,6 +41,26 @@ restore-git:
 	@rm -f $$HOME/.gitconfig
 	@if [ -e $$HOME/.gitconfig.bk ]; then \
 		mv $$HOME/.gitconfig.bk $$HOME/.gitconfig; \
+	fi
+
+.PHONY: init-githooks
+init-githooks:
+	@current_hooks=$$(git config core.hooksPath || true); \
+	if [ -n "$$current_hooks" ] && [ "$$current_hooks" != ".githooks" ]; then \
+		echo "ERROR: core.hooksPath is already set to '$$current_hooks'. Refusing to overwrite."; \
+		exit 1; \
+	fi
+	@echo "Setting core.hooksPath to .githooks ..."
+	@git config --local core.hooksPath .githooks
+
+.PHONY: restore-githooks
+restore-githooks:
+	@current_hooks=$$(git config --local core.hooksPath || true); \
+	if [ "$$current_hooks" = ".githooks" ]; then \
+		echo "Restoring core.hooksPath to default ..."; \
+		git config --local --unset core.hooksPath || true; \
+	else \
+		echo "core.hooksPath is not '.githooks' (found: '$$current_hooks'). Skipping restore."; \
 	fi
 
 .PHONY: init-homebrew
