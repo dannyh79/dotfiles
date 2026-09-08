@@ -8,7 +8,6 @@
 
 # [Terminal]
 cask "kitty"
-cask "iterm2"
 brew "fzf" # Fuzzy finder: https://github.com/junegunn/fzf
 brew "ripgrep" # Finder engine for fzf & neovim's telescope
 brew "asdf" # Tool version manager: https://asdf-vm.com/guide/introduction.html
