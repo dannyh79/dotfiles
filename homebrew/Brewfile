@@ -19,7 +19,7 @@ brew "jq" # JSON query
 brew "mole" # Deep clean/optimize your Mac: https://mole.fit
 
 # [VPN]
-brew tailscale
+brew "tailscale"
 # cask tailscale-app (app; managed tailscale process)
 
 # Version Control
