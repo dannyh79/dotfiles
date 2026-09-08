@@ -53,14 +53,14 @@ init-homebrew:
 		brew bundle dump --file=homebrew/Brewfile.bk --force; \
 	fi
 	@echo "Installing packages from homebrew/Brewfile ..."
-	@brew bundle --file=homebrew/Brewfile
+	@PATH="/opt/homebrew/bin:/usr/local/bin:$$PATH" brew bundle --file=homebrew/Brewfile
 
 .PHONY: restore-homebrew
 restore-homebrew:
 	@echo "Uninstalling all currently installed Homebrew packages ..."
-	@brew list | xargs brew uninstall --force || true
+	@brew list | xargs brew uninstall --ignore-dependencies --force || true
 	@echo "Installing packages from homebrew/Brewfile.bk ..."
-	@brew bundle --file=homebrew/Brewfile.bk
+	@PATH="/opt/homebrew/bin:/usr/local/bin:$$PATH" brew bundle --file=homebrew/Brewfile.bk
 
 .PHONY: init-tmux
 init-tmux:
