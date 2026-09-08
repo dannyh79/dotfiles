@@ -17,6 +17,8 @@ brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
 # brew "watchman" # File watching service: https://facebook.github.io/watchman/
 brew "jq" # JSON query
 brew "mole" # Deep clean/optimize your Mac: https://mole.fit
+tap "can1357/tap"
+brew "can1357/tap/omp" # oh-my-pi: https://github.com/can1357/omp
 
 # [VPN]
 brew "tailscale"
