@@ -7,29 +7,33 @@ restore: restore-zsh restore-tmux restore-git restore-config
 
 .PHONY: init-config
 init-config:
-	@if [ -e $$HOME/.config ]; then \
-		echo "Moving ~/.config to ~/.config.bk ..."; \
-		mv $$HOME/.config $$HOME/.config.bk; \
+	@if [ -L $$HOME/.config ] && [ "$$(readlink $$HOME/.config)" = "$$(pwd -P)" ]; then \
+		:; \
+	elif [ -e $$HOME/.config ] || [ -L $$HOME/.config ]; then \
+		echo "Moving ~/.config to ~/.config.orig ..."; \
+		mv $$HOME/.config $$HOME/.config.orig; \
 	fi
-	@echo "Symlinking $$PWD to ~/.config ..."
-	@ln -sfn $(PWD) $$HOME/.config
+	@echo "Symlinking $$(pwd -P) to ~/.config ..."
+	@ln -sfn $$(pwd -P) $$HOME/.config
 
 .PHONY: restore-config
 restore-config:
 	@echo "Restoring ~/.config ..."
 	@rm -rf $$HOME/.config
-	@if [ -e $$HOME/.config.bk ]; then \
-		mv $$HOME/.config.bk $$HOME/.config; \
+	@if [ -e $$HOME/.config.orig ]; then \
+		mv $$HOME/.config.orig $$HOME/.config; \
 	fi
 
 .PHONY: init-git
 init-git:
-	@if [ -e $$HOME/.gitconfig ]; then \
+	@if [ -L $$HOME/.gitconfig ] && [ "$$(readlink $$HOME/.gitconfig)" = "$$(pwd -P)/git/gitconfig" ]; then \
+		:; \
+	elif [ -e $$HOME/.gitconfig ] || [ -L $$HOME/.gitconfig ]; then \
 		echo "Moving ~/.gitconfig to ~/.gitconfig.bk ..."; \
 		mv $$HOME/.gitconfig $$HOME/.gitconfig.bk; \
 	fi
 	@echo "Symlinking git/gitconfig to ~/.gitconfig ..."
-	@ln -sfn $(PWD)/git/gitconfig $$HOME/.gitconfig
+	@ln -sfn $$(pwd -P)/git/gitconfig $$HOME/.gitconfig
 
 .PHONY: restore-git
 restore-git:
@@ -60,12 +64,14 @@ restore-homebrew:
 
 .PHONY: init-tmux
 init-tmux:
-	@if [ -e $$HOME/.tmux.conf ]; then \
+	@if [ -L $$HOME/.tmux.conf ] && [ "$$(readlink $$HOME/.tmux.conf)" = "$$(pwd -P)/tmux/tmux.conf" ]; then \
+		:; \
+	elif [ -e $$HOME/.tmux.conf ] || [ -L $$HOME/.tmux.conf ]; then \
 		echo "Moving ~/.tmux.conf to ~/.tmux.conf.bk ..."; \
 		mv $$HOME/.tmux.conf $$HOME/.tmux.conf.bk; \
 	fi
 	@echo "Symlinking tmux/tmux.conf to ~/.tmux.conf ..."
-	@ln -sfn $(PWD)/tmux/tmux.conf $$HOME/.tmux.conf
+	@ln -sfn $$(pwd -P)/tmux/tmux.conf $$HOME/.tmux.conf
 	@echo "Installing tmux plugins using TPM ..."
 	@if [ ! -d $$HOME/.tmux/plugins/tpm ]; then \
 		git clone https://github.com/tmux-plugins/tpm $$HOME/.tmux/plugins/tpm; \
@@ -82,12 +88,14 @@ restore-tmux:
 
 .PHONY: init-zsh
 init-zsh:
-	@if [ -e $$HOME/.zshrc ]; then \
+	@if [ -L $$HOME/.zshrc ] && [ "$$(readlink $$HOME/.zshrc)" = "$$(pwd -P)/zsh/zshrc" ]; then \
+		:; \
+	elif [ -e $$HOME/.zshrc ] || [ -L $$HOME/.zshrc ]; then \
 		echo "Moving ~/.zshrc to ~/.zshrc.bk ..."; \
 		mv $$HOME/.zshrc $$HOME/.zshrc.bk; \
 	fi
 	@echo "Symlinking zsh/zshrc to ~/.zshrc ..."
-	@ln -sfn $(PWD)/zsh/zshrc $$HOME/.zshrc
+	@ln -sfn $$(pwd -P)/zsh/zshrc $$HOME/.zshrc
 	@echo "Sourcing ~/.zshrc ..."
 	@zsh -c "source $$HOME/.zshrc"
 
