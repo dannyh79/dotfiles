@@ -12,7 +12,6 @@ cask "iterm2"
 brew "fzf" # Fuzzy finder: https://github.com/junegunn/fzf
 brew "ripgrep" # Finder engine for fzf & neovim's telescope
 brew "asdf" # Tool version manager: https://asdf-vm.com/guide/introduction.html
-brew "thefuck" # Correts terminal command: https://github.com/nvbn/thefuck
 brew "spaceship" # Zsh theme: https://github.com/spaceship-prompt/spaceship-prompt
 brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
 # brew "watchman" # File watching service: https://facebook.github.io/watchman/
