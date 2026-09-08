@@ -6,4 +6,4 @@ pager = "less -MR -+FX"
 [init]
 defaultBranch = main
 [include]
-path = ~/.config/git/secrets
+path = ~/.config/git/host-config
