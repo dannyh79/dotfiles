@@ -17,6 +17,7 @@ brew "spaceship" # Zsh theme: https://github.com/spaceship-prompt/spaceship-prom
 brew "jump" # Jumping around directories: https://github.com/gsamokovarov/jump
 # brew "watchman" # File watching service: https://facebook.github.io/watchman/
 brew "jq" # JSON query
+brew "mole" # Deep clean/optimize your Mac: https://mole.fit
 
 # [VPN]
 brew tailscale
@@ -25,6 +26,7 @@ brew tailscale
 # Version Control
 brew "git"
 brew "git-gui"
+brew "gh" # GitHub CLI: https://cli.github.com
 brew "unbound" # gnutls dep
 brew "gnutls" # gnupg dep
 brew "gnupg" # Commit signing
@@ -59,6 +61,9 @@ brew "telnet"
 # brew "podman-compose"
 # brew "act" # GitHub workflow local runner
 brew "hadolint" # linter
+brew "k3d" # k3s in Docker: https://k3d.io
+brew "k9s" # Kubernetes TUI: https://k9scli.io
+brew "trivy" # Container/repo vulnerability scanner: https://trivy.dev
 
 
 # [Database]
@@ -88,8 +93,10 @@ cask "bitwarden" # Password manager: https://bitwarden.com
 cask "postman"
 cask "slack"
 cask "spotify"
+cask "telegram"
+cask "libreoffice" # Office suite: https://www.libreoffice.org
+cask "raycast" # Launcher/productivity: https://raycast.com
 # cask "steam"
-# cask "telegram"
 # cask "whatsapp"
 # cask "discord"
 
