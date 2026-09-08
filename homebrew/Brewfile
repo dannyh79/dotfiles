@@ -38,6 +38,7 @@ brew "bats-core" # Fancier cat
 cask "font-hack-nerd-font"
 
 brew "neovim"
+brew "tree-sitter-cli" # Required to compile nvim-treesitter parsers
 brew "tmux"
 brew "tpm" # Tmux package manager
 
