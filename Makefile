@@ -166,10 +166,12 @@ init-omp:
 		fi; \
 		ln -sfn $$(pwd -P)/omp/agent/extensions $$HOME/.omp/agent/extensions; \
 	fi
+	@echo "Symlinking omp plugins manifest ..."
+	@mkdir -p $$HOME/.omp/plugins
+	@ln -sfn $$(pwd -P)/omp/plugins/package.json $$HOME/.omp/plugins/package.json
+	@ln -sfn $$(pwd -P)/omp/plugins/bun.lock $$HOME/.omp/plugins/bun.lock
 	@echo "Installing omp plugins dependencies ..."
-	@cd $$(pwd -P)/omp/plugins && bun install
-	@echo "Linking omp plugins ..."
-	@omp plugin link $$(pwd -P)/omp/plugins
+	@cd $$HOME/.omp/plugins && bun install
 
 .PHONY: restore-omp
 restore-omp:
@@ -182,8 +184,8 @@ restore-omp:
 	@if [ -e $$HOME/.omp/agent/extensions.bk ]; then \
 		mv $$HOME/.omp/agent/extensions.bk $$HOME/.omp/agent/extensions; \
 	fi
-	@echo "Unlinking omp plugins ..."
-	@omp plugin uninstall omp-plugins || true
+	@echo "Removing omp plugins manifest ..."
+	@rm -f $$HOME/.omp/plugins/package.json $$HOME/.omp/plugins/bun.lock
 
 # To conform to https://github.com/mrtazz/checkmake's rules only
 .PHONY: test
