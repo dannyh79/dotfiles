@@ -1,9 +1,9 @@
 .PHONY: all
-all: init-config init-git init-githooks init-homebrew init-tmux init-zsh
+all: init-config init-git init-githooks init-homebrew init-asdf init-tmux init-zsh init-omp
 
 # Restores in the opposite sequence of init's
 .PHONY: restore
-restore: restore-zsh restore-tmux restore-githooks restore-git restore-config
+restore: restore-omp restore-zsh restore-tmux restore-asdf restore-githooks restore-git restore-config
 
 .PHONY: init-config
 init-config:
@@ -126,6 +126,64 @@ restore-zsh:
 	@if [ -e $$HOME/.zshrc.bk ]; then \
 		mv $$HOME/.zshrc.bk $$HOME/.zshrc; \
 	fi
+
+.PHONY: init-asdf
+init-asdf:
+	@if [ -L $$HOME/.tool-versions ] && [ "$$(readlink $$HOME/.tool-versions)" = "$$(pwd -P)/asdf/tool-versions" ]; then \
+		:; \
+	elif [ -e $$HOME/.tool-versions ] || [ -L $$HOME/.tool-versions ]; then \
+		echo "Moving ~/.tool-versions to ~/.tool-versions.bk ..."; \
+		mv $$HOME/.tool-versions $$HOME/.tool-versions.bk; \
+	fi
+	@echo "Symlinking asdf/tool-versions to ~/.tool-versions ..."
+	@ln -sfn $$(pwd -P)/asdf/tool-versions $$HOME/.tool-versions
+	@echo "Adding asdf plugins ..."
+	@cut -d' ' -f1 $$HOME/.tool-versions | xargs -I {} asdf plugin add {} 2>/dev/null || true
+	@echo "Installing asdf tools ..."
+	@asdf install
+
+.PHONY: restore-asdf
+restore-asdf:
+	@echo "Restoring ~/.tool-versions ..."
+	@rm -f $$HOME/.tool-versions
+	@if [ -e $$HOME/.tool-versions.bk ]; then \
+		mv $$HOME/.tool-versions.bk $$HOME/.tool-versions; \
+	fi
+
+.PHONY: init-omp
+init-omp:
+	@echo "Setting up omp configuration ..."
+	@mkdir -p $$HOME/.omp/agent
+	@if [ -e $$HOME/.omp/agent/config.yml ] && [ ! -L $$HOME/.omp/agent/config.yml ]; then \
+		echo "Backing up existing omp config.yml ..."; \
+		mv $$HOME/.omp/agent/config.yml $$HOME/.omp/agent/config.yml.bk; \
+	fi
+	@ln -sfn $$(pwd -P)/omp/agent/config.yml $$HOME/.omp/agent/config.yml
+	@if [ -d $$(pwd -P)/omp/agent/extensions ]; then \
+		if [ -e $$HOME/.omp/agent/extensions ] && [ ! -L $$HOME/.omp/agent/extensions ]; then \
+			echo "Backing up existing omp extensions ..."; \
+			mv $$HOME/.omp/agent/extensions $$HOME/.omp/agent/extensions.bk; \
+		fi; \
+		ln -sfn $$(pwd -P)/omp/agent/extensions $$HOME/.omp/agent/extensions; \
+	fi
+	@echo "Installing omp plugins dependencies ..."
+	@cd $$(pwd -P)/omp/plugins && bun install
+	@echo "Linking omp plugins ..."
+	@omp plugin link $$(pwd -P)/omp/plugins
+
+.PHONY: restore-omp
+restore-omp:
+	@echo "Restoring omp configuration ..."
+	@rm -f $$HOME/.omp/agent/config.yml
+	@if [ -e $$HOME/.omp/agent/config.yml.bk ]; then \
+		mv $$HOME/.omp/agent/config.yml.bk $$HOME/.omp/agent/config.yml; \
+	fi
+	@rm -f $$HOME/.omp/agent/extensions
+	@if [ -e $$HOME/.omp/agent/extensions.bk ]; then \
+		mv $$HOME/.omp/agent/extensions.bk $$HOME/.omp/agent/extensions; \
+	fi
+	@echo "Unlinking omp plugins ..."
+	@omp plugin uninstall omp-plugins || true
 
 # To conform to https://github.com/mrtazz/checkmake's rules only
 .PHONY: test
