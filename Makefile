@@ -173,8 +173,8 @@ init-omp:
 	@echo "Installing omp plugins dependencies ..."
 	@cd $$HOME/.omp/plugins && bun install
 	@echo "Configuring OMP marketplaces and installing plugins ..."
-	@omp plugin marketplace add anthropics/claude-plugins-official || true
-	@omp plugin install superpowers@claude-plugins-official
+	@omp plugin marketplace list | grep -q "claude-plugins-official" || omp plugin marketplace add anthropics/claude-plugins-official
+	@omp plugin list | grep -q "superpowers@claude-plugins-official" || omp plugin install superpowers@claude-plugins-official
 
 .PHONY: restore-omp
 restore-omp:
